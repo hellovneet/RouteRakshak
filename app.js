@@ -32,7 +32,46 @@
   function nextAction(student){if(student.status==='WAITING FOR PICKUP')return {type:'BOARDING',label:'Confirm boarding',next:'IN THE BUS',leg:'morning',roles:['conductor','driver']};if(student.status==='IN THE BUS'&&student.leg==='morning')return {type:'SCHOOL_ARRIVAL',label:'Confirm school arrival',next:'IN SCHOOL',leg:'school',roles:['school_staff']};if(student.status==='IN SCHOOL')return {type:'RETURN_BOARDING',label:'Confirm return boarding',next:'IN THE BUS',leg:'afternoon',roles:['conductor','driver']};if(student.status==='IN THE BUS'&&student.leg==='afternoon')return {type:'HOME_DROP',label:'Confirm home drop',next:'HOME DROPPED',leg:'complete',roles:['conductor','driver']};if(student.status==='HOME DROPPED')return {type:'NEW_DAY',label:'Reset for next day',next:'WAITING FOR PICKUP',leg:'morning',roles:['admin']};return null;}
   function roleLabel(role){return ({admin:'School admin',school_staff:'School staff',conductor:'Driver / conductor',driver:'Driver',guardian:'Guardian (read-only)'})[role]||role;}
   function canAct(student,action){return action && action.roles.includes(state.role);}
-  function render(){applyRoleExperience();renderMetrics();renderStudents();renderRecent();renderAuditCount();if(currentView!=='overview')renderFullView();}
+  function render(){applyRoleExperience();renderRoleDashboard();renderMetrics();renderStudents();renderRecent();renderAuditCount();if(currentView!=='overview')renderFullView();}
+
+  function renderRoleDashboard(){
+    const host=$('roleHome');if(!host)return;
+    const role=state.role||'admin';
+    const all=state.students;
+    const mine=visibleStudents();
+    const count=(list,status)=>list.filter(s=>s.status===status).length;
+    const card=(label,value,sub,icon)=>'<article class="role-stat"><span class="role-stat-icon">'+icon+'</span><div><small>'+label+'</small><strong>'+value+'</strong><span>'+sub+'</span></div></article>';
+    const heading=(eyebrow,title,desc)=>'<div class="role-home-heading"><div class="section-kicker">'+eyebrow+'</div><h2>'+title+'</h2><p>'+desc+'</p></div>';
+    let content='';
+    if(role==='admin'){
+      host.classList.add('hidden');$('metricsGrid')?.classList.remove('hidden');$('overviewGrid').classList.remove('hidden');$('lowerGrid').classList.remove('hidden');return;
+    }
+    host.classList.remove('hidden');
+    $('metricsGrid')?.classList.add('hidden');$('overviewGrid').classList.add('hidden');$('lowerGrid').classList.add('hidden');
+    if(role==='school_staff'){
+      const pending=all.filter(s=>s.status==='IN THE BUS'&&s.leg==='morning');
+      const arrived=count(all,'IN SCHOOL');
+      content=heading('SCHOOL OPERATIONS','Arrival desk','Confirm arrivals only after the student is physically checked in.')+
+        '<div class="role-stats">'+card('Awaiting school arrival',pending.length,'Students marked aboard','↘')+card('At school',arrived,'Arrival status confirmed','⌂')+card('Total register',all.length,'Demo student records','▤')+'</div>'+
+        '<div class="role-work-grid"><article class="role-work-card"><span class="role-work-icon">⌂</span><h3>Arrival verification</h3><p>Review students whose morning boarding is confirmed and record school arrival.</p><button class="primary-button" data-view="students">Open arrival register →</button></article><article class="role-work-card"><span class="role-work-icon">◷</span><h3>Recent attendance events</h3><p>'+state.events.length+' events recorded in this browser demo.</p><button class="secondary-button" data-view="audit">Review event history →</button></article></div>';
+    }else if(role==='conductor'||role==='driver'){
+      const aboard=count(mine,'IN THE BUS');
+      const waiting=count(mine,'WAITING FOR PICKUP');
+      content=heading('DRIVER WORKSPACE','Your route, your hand-offs','Vehicle movement is simulated. Confirm each student individually; GPS does not confirm boarding.')+
+        '<div class="role-stats">'+card('Assigned vehicle','RR-012','Route A · North Campus','▣')+card('Waiting pickup',waiting,'Assigned-route students','↗')+card('Currently aboard',aboard,'Confirmed in demo register','✓')+'</div>'+
+        '<div class="role-work-grid"><article class="role-work-card route-focus"><span class="live-tag"><i></i> SIMULATED ROUTE</span><h3>North Campus Loop</h3><p>Check each student before confirming boarding or home drop. Student events are stored only in this browser.</p><div class="route-steps"><span>01&nbsp; Pickup</span><b>→</b><span>02&nbsp; School</span><b>→</b><span>03&nbsp; Home</span></div><button class="primary-button" data-view="students">Open my student list →</button></article><article class="role-work-card"><span class="role-work-icon">◷</span><h3>Trip event history</h3><p>Review the latest recorded actions for your assigned route.</p><button class="secondary-button" data-view="audit">View route events →</button></article></div>';
+    }else{
+      const child=all.find(s=>s.id==='ST-1088');
+      const status=child?child.status:'No linked demo student';
+      const last=child&&child.lastEvent?relativeTime(child.lastEvent.at):'No event recorded';
+      content=heading('GUARDIAN PORTAL','Your child’s journey','Read-only demo view. These updates are fictional and are not sent by a school or vehicle.')+
+        '<article class="guardian-journey"><div class="guardian-child"><span class="student-avatar lavender">'+esc(child?.initials||'AK')+'</span><div><small>LINKED DEMO STUDENT</small><h3>'+esc(child?.name||'Demo student')+'</h3><p>'+esc(child?.grade||'')+' · '+esc(child?.route||'')+'</p></div><span class="guardian-readonly">READ ONLY</span></div><div class="guardian-status"><div><small>CURRENT JOURNEY STATUS</small><strong class="status-pill '+statusClass(status)+'"><i></i>'+esc(status)+'</strong><p>Last update: '+esc(last)+'</p></div><div class="guardian-status-mark">✓</div></div><div class="guardian-note"><strong>Safety note</strong><p>For this prototype, status is based on manually recorded demo events. It is not live tracking, a real notification, or proof of physical location.</p></div><button class="secondary-button" data-view="students">View journey details →</button></article>';
+    }
+    host.innerHTML=content;
+    $('pageTitle').innerHTML=role==='school_staff'?'School <em>arrival desk.</em>':role==='guardian'?'Family <em>journey view.</em>':'Driver <em>route console.</em>';
+    $('pageSubtitle').textContent=role==='school_staff'?'A focused workspace for student arrival verification.':role==='guardian'?'A read-only view of one linked fictional student.':'Your assigned vehicle, route and student hand-offs.';
+    $('crumb').textContent=role==='school_staff'?'Arrival desk':role==='guardian'?'Guardian portal':'Driver console';
+  }
   function visibleStudents(){
     if(state.role==='guardian') return state.students.filter(s=>s.id==='ST-1088');
     if(state.role==='driver'||state.role==='conductor') return state.students.filter(s=>s.bus==='RR-012');
