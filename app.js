@@ -74,17 +74,25 @@
   // Clearly simulated telemetry; this never changes student attendance.
   function tickGps(){gpsTick=(gpsTick+1)%100;const lat=(28.6139+Math.sin(gpsTick/12)*0.012).toFixed(4);const lon=(77.2090+Math.cos(gpsTick/14)*0.015).toFixed(4);$('gpsCoord').textContent=lat+'° N · '+lon+'° E';$('gpsSpeed').textContent=(18+Math.round((Math.sin(gpsTick/5)+1)*7))+' km/h';const progress=48+Math.round((Math.sin(gpsTick/17)+1)*9);$('routeProgress').style.width=progress+'%';$('progressLabel').textContent=progress+'% complete';}
   const loginGate=$('loginGate'), appShell=$('appShell');
-  function openDemoWorkspace(){loginGate.classList.add('hidden');appShell.classList.remove('hidden');}
-  $('demoLoginForm').addEventListener('submit',e=>{
+  function openDemoWorkspace(){
+    if(loginGate) loginGate.classList.add('hidden');
+    if(appShell) appShell.classList.remove('hidden');
+  }
+  const demoLoginForm=$('demoLoginForm');
+  if(demoLoginForm) demoLoginForm.addEventListener('submit',e=>{
     e.preventDefault();
-    if(!$('demoAccessCode').value.trim())return;
-    state.role=$('loginRole').value;
+    state.role=$('loginRole')?.value || 'admin';
     saveState();
-    sessionStorage.setItem(demoSessionKey,'active');
+    try { sessionStorage.setItem(demoSessionKey,'active'); } catch(err) { /* session storage may be blocked */ }
     openDemoWorkspace();
     setView('overview');
     toast('Demo workspace opened',roleLabel(state.role),'success');
   });
-  if(sessionStorage.getItem(demoSessionKey)==='active'){openDemoWorkspace();}else{loginGate.classList.remove('hidden');appShell.classList.add('hidden');}
+  let demoSessionActive=false;
+  try { demoSessionActive=sessionStorage.getItem(demoSessionKey)==='active'; } catch(err) { /* session storage may be blocked */ }
+  if(demoSessionActive){openDemoWorkspace();}else{
+    if(loginGate) loginGate.classList.remove('hidden');
+    if(appShell) appShell.classList.add('hidden');
+  }
   render();tickGps();setInterval(tickGps,4500);
 })();
