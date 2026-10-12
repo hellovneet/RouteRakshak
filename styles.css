@@ -377,3 +377,158 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .amber-theme .topbar{background:rgba(250,244,235,.82)}
 .amber-theme .nav-item.active{background:linear-gradient(100deg,rgba(166,92,27,.15),rgba(166,92,27,.05));box-shadow:inset 3px 0 0 #a65c1b}
 .amber-theme .metric-card,.amber-theme .panel,.amber-theme .glass{background:rgba(255,251,244,.78);border-color:rgba(255,255,255,.9)}
+
+
+/* Signature finish — RouteRakshak / calm, confident operations UI */
+:root{
+  --ink:#142f3b;
+  --muted:#6c818b;
+  --teal:#087f79;
+  --teal-dark:#06645f;
+  --shadow:0 14px 36px rgba(20,47,59,.065);
+}
+body{
+  font-family:"DM Sans",sans-serif;
+  background-color:#f4f8f8;
+  background-image:linear-gradient(rgba(24,75,83,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(24,75,83,.025) 1px,transparent 1px),radial-gradient(ellipse at 8% 0%,rgba(81,178,164,.12),transparent 36rem);
+  background-size:32px 32px,32px 32px,auto;
+}
+.ambient{display:none}
+.app-shell{gap:0}
+.sidebar{width:250px;min-width:250px;padding:25px 16px 18px;border-radius:0 22px 22px 0;border:1px solid rgba(255,255,255,.86);border-left:0;background:rgba(250,253,253,.9)}
+.brand{padding:0 9px 27px;gap:11px}
+.brand strong{font-family:"Manrope",sans-serif;font-weight:800;letter-spacing:-.045em}
+.brand small{letter-spacing:.15em;font-size:9px}
+.brand-mark{width:42px;height:42px;border-radius:14px}
+.workspace-label{padding-left:12px;letter-spacing:.16em;font-size:10px}
+.nav-list{gap:6px}
+.nav-item{min-height:43px;padding:0 12px;border-radius:11px;font-weight:600;color:#667f89}
+.nav-item>span:first-child{width:23px;font-size:17px}
+.nav-item.active{color:#08746e;background:linear-gradient(90deg,rgba(8,127,121,.13),rgba(8,127,121,.045));box-shadow:inset 3px 0 #087f79}
+.privacy-note{margin:12px 2px 17px;padding:13px;border-radius:14px;background:rgba(8,127,121,.055);border:1px solid rgba(8,127,121,.09)}
+.profile-row{padding:13px 8px 0;border-top:1px solid rgba(20,65,76,.08)}
+.main-content{padding:0 30px 20px;min-width:0}
+.topbar{min-height:66px;margin:0 -30px 30px;padding:0 30px;background:rgba(246,249,249,.83);border-bottom:1px solid rgba(28,70,82,.075)}
+.breadcrumbs{font-size:12px;color:#81949c}
+.top-actions{gap:10px}
+.demo-pill{border:1px solid rgba(8,127,121,.13);background:rgba(8,127,121,.055);padding:8px 11px;border-radius:999px;font-size:9px;letter-spacing:.09em}
+.icon-button{width:37px;height:37px;border:1px solid rgba(28,70,82,.11);border-radius:11px;background:rgba(255,255,255,.72)}
+.logout-button{padding:9px 12px;border-radius:11px}
+.page-heading{align-items:flex-end;margin-bottom:25px;gap:22px}
+.eyebrow{font-size:10px;letter-spacing:.15em;color:#81949c}
+.eyebrow-line{width:22px;height:2px;border-radius:4px;background:#0d9287}
+.page-heading h1{font-family:"Manrope",sans-serif;font-size:clamp(29px,2.6vw,38px);line-height:1.15;letter-spacing:-.06em;margin:12px 0 9px;font-weight:800}
+.page-heading h1 em{color:#07857e;font-style:normal}
+.page-heading p{max-width:650px;line-height:1.65;font-size:13px;color:#718690}
+.date-chip{border-radius:14px;padding:11px 14px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);box-shadow:0 5px 18px rgba(20,47,59,.035)}
+.metrics-grid{gap:15px;margin-bottom:18px}
+.metric-card{min-width:0;padding:20px;border-radius:17px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.96);box-shadow:0 7px 23px rgba(20,47,59,.045);transition:transform .18s ease,box-shadow .18s ease}
+.metric-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,47,59,.085)}
+.metric-top{font-size:12px;font-weight:600;color:#718690}
+.metric-icon{width:38px;height:38px;border-radius:12px;font-size:17px}
+.metric-value{font-family:"Manrope",sans-serif;font-size:34px;line-height:1.15;font-weight:800;letter-spacing:-.06em;margin:17px 0 12px}
+.metric-foot{font-size:10px;color:#718690}
+.content-grid{grid-template-columns:minmax(0,1.5fr) minmax(310px,.92fr);gap:17px;align-items:stretch}
+.lower-grid{gap:17px;margin-top:17px}
+.panel{padding:21px;border-radius:18px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.98);box-shadow:0 8px 28px rgba(20,47,59,.045)}
+.panel-heading h2,.panel-title{font-family:"Manrope",sans-serif;font-size:17px;letter-spacing:-.04em;font-weight:800}
+.panel-heading p{font-size:11px;line-height:1.6;color:#7a8e97}
+.section-kicker{font-size:9px;letter-spacing:.15em;color:#7f959d;font-weight:700}
+.text-button{font-size:11px;font-weight:700;color:#087f79}
+.journey-toolbar{gap:9px;margin:18px 0 14px}
+.search-box{border-radius:10px;background:#f8fbfb;border:1px solid #e6eeee;min-height:39px}
+.journey-toolbar select{border:1px solid #e6eeee;border-radius:10px;background:#f8fbfb;color:#536d78;font-size:11px;padding:0 11px}
+.table-wrap{border:1px solid #eaf0f1;border-radius:12px}
+thead th{font-size:9px;letter-spacing:.09em;padding:12px 12px;background:#f7fafa;color:#81949b}
+tbody td{padding:13px 12px;font-size:11px;border-bottom:1px solid #edf2f2}
+tbody td strong{font-weight:700;color:#25434e}
+.table-footer{padding-top:13px;font-size:10px;color:#80939a}
+.map-art{border-radius:14px;overflow:hidden;border:1px solid rgba(24,90,91,.08)}
+.map-panel .panel-heading{margin-bottom:15px}
+.live-tag{border:1px solid rgba(8,127,121,.12);border-radius:999px;background:rgba(8,127,121,.055);padding:7px 9px;font-size:9px}
+.map-legend{border-radius:9px;background:rgba(255,255,255,.78);padding:8px 10px}
+.map-coordinates{padding:10px 12px;background:rgba(255,255,255,.86)}
+.fleet-mini{padding:16px 2px 0}
+.fleet-mini-head{font-size:11px}
+.vehicle-row{padding:14px 0}
+.vehicle-icon{border-radius:12px;width:39px;height:39px;background:#e6f5f2;color:#087f79}
+.vehicle-info strong,.vehicle-speed strong{font-size:11px}
+.progress-track{height:5px;border-radius:8px;background:#eaf0f0}
+.progress-track span{border-radius:8px;background:linear-gradient(90deg,#0b9b8e,#72c9b1)}
+.progress-caption{font-size:9px;color:#82949b}
+.event-row{padding:12px 0;border-bottom:1px solid #edf2f2}
+.workflow-step{padding:12px 10px;border-radius:12px;background:rgba(248,251,251,.75);border:1px solid #edf2f2}
+.step-number{font-size:9px;color:#9aadb4}
+.app-footer{padding:21px 2px 0;font-size:10px;color:#8a9ba2}
+.login-gate{background:radial-gradient(ellipse at 18% 15%,rgba(8,127,121,.13),transparent 32rem),radial-gradient(ellipse at 85% 90%,rgba(100,157,193,.12),transparent 32rem),#f3f7f7}
+.login-card{width:min(100% - 32px,470px);padding:38px;border-radius:24px;background:rgba(255,255,255,.83);border:1px solid rgba(255,255,255,.95);box-shadow:0 28px 90px rgba(18,54,66,.13)}
+.login-brand{padding:0;margin-bottom:38px}
+.login-card .section-kicker{margin-bottom:13px}
+.login-card h1{font-family:"Manrope",sans-serif;font-size:35px;line-height:1.13;letter-spacing:-.06em;font-weight:800}
+.login-intro{font-size:13px;line-height:1.7;color:#72868f;margin:12px 0 25px}
+.login-field span{font-size:11px;font-weight:700;color:#4d6872;margin-bottom:8px}
+.login-field select{min-height:46px;border:1px solid #dfe9e9;border-radius:11px;background:#f9fbfb;padding:0 13px;color:#27444f}
+.primary-button{border-radius:11px;background:#087f79;box-shadow:0 7px 16px rgba(8,127,121,.16);font-weight:700}
+.primary-button:hover{background:#066b66;box-shadow:0 9px 22px rgba(8,127,121,.22)}
+.login-submit{min-height:47px;margin-top:15px}
+.login-disclaimer{margin-top:23px;padding:12px;border-radius:11px;background:#f3f7f7;border:1px solid #eaf0f0}
+.login-disclaimer p{font-size:10px;line-height:1.55;color:#71868f}
+.login-footer{margin-top:25px;font-size:8px;letter-spacing:.12em;color:#91a1a7}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(8,127,121,.28);outline-offset:2px}
+.dark-theme body,.dark-theme{background-color:#0d1a20;background-image:radial-gradient(ellipse at 8% 0%,rgba(8,127,121,.14),transparent 35rem)}
+.dark-theme .sidebar{background:rgba(15,31,38,.96);border-color:rgba(220,240,243,.08)}
+.dark-theme .topbar{background:rgba(13,26,32,.88);border-color:rgba(220,240,243,.08)}
+.dark-theme .panel,.dark-theme .metric-card,.dark-theme .glass{background:rgba(20,39,47,.92);border-color:rgba(220,240,243,.09);box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.dark-theme .page-heading p,.dark-theme .panel-heading p,.dark-theme .metric-top,.dark-theme .metric-foot{color:#9ab0b9}
+.dark-theme .table-wrap{border-color:rgba(220,240,243,.09)}
+.dark-theme thead th,.dark-theme .journey-toolbar select,.dark-theme .search-box{background:rgba(8,22,28,.58);color:#afc1c7;border-color:rgba(220,240,243,.11)}
+.dark-theme tbody td,.dark-theme .event-row{border-color:rgba(220,240,243,.075)}
+.dark-theme .workflow-step{background:rgba(255,255,255,.025);border-color:rgba(220,240,243,.08)}
+.dark-theme .login-card{background:rgba(18,36,44,.94);border-color:rgba(220,240,243,.09)}
+.dark-theme .login-field select,.dark-theme .login-disclaimer{background:rgba(8,22,28,.72);border-color:rgba(220,240,243,.11);color:#d8e6e9}
+.dark-theme .login-field span{color:#c0d0d5}
+.dark-theme .login-disclaimer p{color:#a2b6bd}
+.amber-theme body,.amber-theme{background-color:#faf5ed;background-image:linear-gradient(rgba(100,68,37,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(100,68,37,.025) 1px,transparent 1px),radial-gradient(ellipse at 8% 0%,rgba(223,154,74,.16),transparent 36rem);background-size:32px 32px,32px 32px,auto}
+.amber-theme .sidebar{background:rgba(255,251,244,.94)}
+.amber-theme .topbar{background:rgba(250,245,237,.88)}
+.amber-theme .panel,.amber-theme .metric-card,.amber-theme .glass{background:rgba(255,252,246,.89);border-color:rgba(255,255,255,.98)}
+.amber-theme .search-box,.amber-theme .journey-toolbar select{background:#fffaf2;border-color:#eee1ce}
+@media(max-width:1100px){
+  .sidebar{width:220px;min-width:220px}
+  .main-content{padding-left:22px;padding-right:22px}
+  .topbar{margin-left:-22px;margin-right:-22px;padding-left:22px;padding-right:22px}
+  .content-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){
+  .sidebar{width:100%;min-width:0;border-radius:0 0 18px 18px;border:1px solid rgba(255,255,255,.85);border-top:0;padding:14px 15px 10px}
+  .brand{padding:0 5px 12px}
+  .workspace-label,.sidebar-spacer,.privacy-note,.profile-row{display:none}
+  .nav-list{display:flex;overflow-x:auto;gap:5px;padding-bottom:2px}
+  .nav-item{white-space:nowrap;min-height:38px;padding:0 11px;font-size:11px}
+  .app-shell{display:flex;flex-direction:column}
+  .main-content{padding:0 15px 18px}
+  .topbar{margin:0 -15px 23px;padding:0 15px;min-height:58px;gap:10px}
+  .breadcrumbs{font-size:10px}
+  .demo-pill{display:none}
+  .top-actions{gap:7px}
+  .page-heading{align-items:flex-start;flex-direction:column;gap:14px}
+  .page-heading h1{font-size:29px}
+  .date-chip{align-self:flex-start}
+  .metrics-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .metric-card{padding:15px}
+  .metric-value{font-size:29px;margin:12px 0 8px}
+  .content-grid,.lower-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+  .panel{padding:15px;border-radius:15px}
+  .panel-heading{gap:10px}
+  .panel-heading h2{font-size:16px}
+  .journey-toolbar{flex-wrap:wrap}
+  .search-box{flex:1 1 100%}
+  .journey-toolbar select{min-height:38px;flex:1}
+  .table-wrap{overflow-x:auto}
+  table{min-width:650px}
+  .login-card{padding:27px 23px}
+  .login-card h1{font-size:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
