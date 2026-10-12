@@ -723,3 +723,24 @@ body:not(.dark-theme):not(.amber-theme) .login-field select:focus{
 @media(max-width:850px){
   body:not(.dark-theme):not(.amber-theme) .sidebar{background:rgba(255,255,255,.96)}
 }
+
+
+/* Live geographic map canvas (OpenStreetMap tiles + demo vehicle marker) */
+.live-map-wrap{isolation:isolate;background:#edf1f7;min-height:265px}
+.live-map{position:absolute;inset:0;width:100%;height:100%;z-index:1;background:#edf1f7}
+.live-map .leaflet-control-attribution{font-size:9px}
+.live-map .leaflet-control-zoom a{color:#182238}
+.rr-bus-marker{border:0;background:transparent}
+.rr-bus-marker span{display:grid;place-items:center;width:42px;height:30px;border:2px solid #fff;border-radius:9px;background:#3459D9;color:#fff;font:800 10px 'DM Sans',sans-serif;letter-spacing:.4px;box-shadow:0 3px 12px rgba(24,34,56,.28)}
+.live-map-wrap .map-legend,.live-map-wrap .map-coordinates{z-index:500}
+.live-map-wrap .map-legend{left:12px;top:12px}
+.live-map-wrap .map-coordinates{right:10px;bottom:10px}
+.map-fallback{position:absolute;z-index:450;left:50%;top:50%;transform:translate(-50%,-50%);width:min(82%,380px);padding:14px 16px;border:1px solid #E3E8F0;border-radius:12px;background:rgba(255,255,255,.96);color:#69758A;font-size:12px;line-height:1.6;box-shadow:0 8px 24px rgba(24,34,56,.08)}
+.map-fallback.hidden{display:none}
+.dark-theme .live-map-wrap,.dark-theme .live-map{background:#202a35}
+@media(max-width:520px){
+ .live-map-wrap{height:280px}
+ .live-map-wrap .map-legend{max-width:calc(100% - 20px);gap:8px;flex-wrap:wrap}
+ .live-map-wrap .map-coordinates{max-width:calc(100% - 20px);right:8px;bottom:8px}
+ .live-map-wrap .map-coordinates strong{font-size:8px}
+}
