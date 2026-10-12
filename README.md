@@ -6,7 +6,9 @@ RouteRakshak is a standalone transport-management project with a crystal-clear F
 
 ## Current prototype
 
-This first version is a frontend prototype with demo data and browser-local persistence. It is not yet a production system: real authentication, server-side role enforcement, cross-device real-time updates, and push/SMS notifications must be implemented in a trusted backend before use with real students.
+The frontend now includes a demo workspace entry screen and role-specific views for school admins, school staff, drivers/conductors, and parents/guardians. The demo role picker and access-code field are **not real authentication**; any non-empty code opens the selected preview. Parent and assigned-bus filtering are illustrative frontend behavior only, not secure data isolation.
+
+The app uses fictional demo data and browser-local persistence. It is not yet a production system: real authentication, server-side role enforcement, database-backed record scoping, cross-device real-time updates, and push/SMS notifications must be implemented in a trusted backend before use with real students.
 
 ## Journey events
 
