@@ -276,3 +276,104 @@ body.amber-theme{background:radial-gradient(circle at 12% 0%,#fff4df 0,transpare
 .amber-theme .confirm-dialog{background:rgba(255,248,235,.98);color:#4b3020}
 .amber-theme .toast{background:rgba(255,248,235,.97);color:#4b3020;border-color:#ead6bc}
 @media(max-width:560px){.logout-button{padding:0 8px;font-size:9px}.logout-button span{display:inline}}
+
+
+/* RouteRakshak visual refinement — calmer, sharper, more intentional */
+:root{
+  --ink:#132f3d;
+  --muted:#6c8490;
+  --teal:#087f79;
+  --teal-dark:#06645f;
+  --line:rgba(23,66,79,.10);
+  --shadow:0 10px 30px rgba(23,54,68,.07);
+}
+body{
+  letter-spacing:-.012em;
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(90,190,178,.15),transparent 34rem),
+    radial-gradient(ellipse at 100% 14%,rgba(119,169,210,.13),transparent 30rem),
+    #f3f7f8;
+}
+.ambient-one,.ambient-two{opacity:.18;filter:blur(90px)}
+.glass,.sidebar,.metric-card,.panel{
+  -webkit-backdrop-filter:blur(16px) saturate(125%);
+  backdrop-filter:blur(16px) saturate(125%);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 8px 26px rgba(25,57,69,.055),inset 0 1px 0 rgba(255,255,255,.82);
+}
+.sidebar{
+  background:rgba(249,252,252,.88);
+  border-right:1px solid rgba(27,68,80,.08);
+  box-shadow:8px 0 28px rgba(30,65,77,.025);
+}
+.brand-mark{box-shadow:0 7px 16px rgba(8,127,121,.20);border-radius:13px}
+.nav-list{gap:5px}
+.nav-item{border-radius:12px;transition:background .18s ease,transform .18s ease,color .18s ease}
+.nav-item:hover{transform:translateX(2px);background:rgba(8,127,121,.065)}
+.nav-item.active{background:linear-gradient(100deg,rgba(8,127,121,.13),rgba(8,127,121,.055));box-shadow:inset 3px 0 0 var(--teal);font-weight:700}
+.topbar{background:rgba(243,247,248,.78);border-bottom:1px solid rgba(24,62,75,.075);backdrop-filter:blur(18px)}
+.page-heading{margin-bottom:25px}
+.page-heading h1{font-size:clamp(1.8rem,2.2vw,2.35rem);letter-spacing:-.055em;line-height:1.12;font-weight:780}
+.page-heading h1 em{font-style:normal;color:var(--teal)}
+.metric-card{
+  border-radius:20px;padding:21px 22px;position:relative;overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.metric-card:after{content:"";position:absolute;width:105px;height:105px;right:-42px;top:-48px;border-radius:50%;background:rgba(8,127,121,.055);pointer-events:none}
+.metric-card:hover{transform:translateY(-3px);box-shadow:0 15px 32px rgba(25,57,69,.09);border-color:rgba(8,127,121,.18)}
+.metric-icon{border-radius:13px;width:42px;height:42px}
+.panel{border-radius:20px;padding:22px}
+.panel-header{gap:14px}
+.panel-title{letter-spacing:-.025em}
+.table-wrap{border-radius:14px;overflow:auto}
+thead th{font-size:.69rem;letter-spacing:.075em;text-transform:uppercase;color:#718893;background:rgba(235,243,244,.64);padding:13px 15px}
+tbody td{padding:14px 15px;border-bottom:1px solid rgba(27,68,80,.065)}
+tbody tr:last-child td{border-bottom:0}
+.table-wrap tbody tr:hover{background:rgba(8,127,121,.035)}
+.status-pill{font-weight:700;letter-spacing:.005em;border:1px solid transparent}
+.search-box{border:1px solid rgba(31,73,86,.13);background:rgba(255,255,255,.72);border-radius:12px;transition:border-color .18s,box-shadow .18s}
+.search-box:focus-within{border-color:rgba(8,127,121,.48);box-shadow:0 0 0 3px rgba(8,127,121,.09)}
+button,select,input{font:inherit}
+button{transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+button:active{transform:translateY(1px)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(8,127,121,.28);outline-offset:2px}
+.logout-button{border-radius:11px;border:1px solid rgba(201,75,83,.18);background:rgba(255,244,244,.86);color:#a83e4b;font-weight:700;padding:9px 12px}
+.logout-button:hover{background:#fff0f1;box-shadow:0 5px 14px rgba(168,62,75,.10)}
+.login-card{border:1px solid rgba(255,255,255,.86);box-shadow:0 24px 70px rgba(22,55,68,.13),inset 0 1px 0 rgba(255,255,255,.9);border-radius:26px}
+.login-card h1{letter-spacing:-.055em}
+.workflow-step,.register-card,.fleet-card{border-radius:16px;border:1px solid rgba(28,69,82,.09);box-shadow:0 5px 18px rgba(25,57,69,.035)}
+.toast{border-radius:14px;box-shadow:0 12px 30px rgba(20,48,60,.16)}
+.app-footer{color:#8a9da5}
+@media(max-width:920px){
+  .main-content{padding:22px}
+  .panel{padding:18px}
+}
+@media(max-width:600px){
+  .main-content{padding:15px}
+  .topbar{padding:12px 14px}
+  .page-heading{margin-bottom:19px}
+  .page-heading h1{font-size:1.8rem}
+  .metric-card{padding:16px;border-radius:16px}
+  .panel{padding:15px;border-radius:16px}
+  .logout-button{padding:8px 9px}
+}
+.dark-theme{
+  --ink:#e4f0f3;--muted:#9ab0b9;--line:rgba(211,236,240,.11);
+  background:#0c1920;
+}
+.dark-theme body,.dark-theme{background:radial-gradient(ellipse at 10% 0%,rgba(13,108,104,.17),transparent 34rem),#0c1920}
+.dark-theme .sidebar{background:rgba(15,31,39,.92);border-color:rgba(220,240,243,.08)}
+.dark-theme .topbar{background:rgba(12,25,32,.82);border-color:rgba(220,240,243,.08)}
+.dark-theme .glass,.dark-theme .metric-card,.dark-theme .panel{background:rgba(21,40,49,.83);border-color:rgba(220,240,243,.09);box-shadow:0 10px 28px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.035)}
+.dark-theme thead th{background:rgba(220,240,243,.045);color:#a8bdc5}
+.dark-theme tbody td{border-color:rgba(220,240,243,.065)}
+.dark-theme .search-box{background:rgba(9,22,29,.65);border-color:rgba(220,240,243,.13)}
+.dark-theme .logout-button{background:rgba(129,48,57,.22);border-color:rgba(255,130,140,.2);color:#ffb0b7}
+.amber-theme{
+  --ink:#392b1d;--muted:#88735d;--teal:#a65c1b;--teal-dark:#834515;
+}
+.amber-theme body,.amber-theme{background:radial-gradient(ellipse at 12% 0%,rgba(235,171,93,.18),transparent 34rem),#faf4eb}
+.amber-theme .sidebar{background:rgba(255,250,242,.9)}
+.amber-theme .topbar{background:rgba(250,244,235,.82)}
+.amber-theme .nav-item.active{background:linear-gradient(100deg,rgba(166,92,27,.15),rgba(166,92,27,.05));box-shadow:inset 3px 0 0 #a65c1b}
+.amber-theme .metric-card,.amber-theme .panel,.amber-theme .glass{background:rgba(255,251,244,.78);border-color:rgba(255,255,255,.9)}
