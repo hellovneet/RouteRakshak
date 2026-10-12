@@ -166,3 +166,39 @@ tbody td strong{color:#f7f5fb}
 .login-footer{display:flex;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.09);padding-top:18px;margin-top:25px;color:#756d80;font-size:8px;letter-spacing:1px;font-weight:700}
 .app-shell.hidden{display:none!important}
 @media(max-width:560px){.login-gate{padding:14px}.login-card{padding:24px 20px}.login-card h1{font-size:27px}}
+
+
+/* Polished light theme for the entry screen; dark theme keeps the original night-glass treatment. */
+body:not(.dark-theme) .login-gate{
+  background:
+    radial-gradient(circle at 15% 12%,rgba(36,173,164,.13),transparent 34%),
+    radial-gradient(circle at 85% 88%,rgba(93,151,203,.13),transparent 32%),
+    linear-gradient(135deg,#f5fafb 0%,#eaf3f5 52%,#f7f9fb 100%);
+}
+body:not(.dark-theme) .login-card{
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.94);
+  box-shadow:0 24px 80px rgba(36,77,94,.14);
+  color:#183446;
+}
+body:not(.dark-theme) .login-card .brand,
+body:not(.dark-theme) .login-card h1{color:#183446}
+body:not(.dark-theme) .login-card .brand small,
+body:not(.dark-theme) .login-card .login-intro{color:#6f8793}
+body:not(.dark-theme) .login-card .section-kicker{color:#168f8b}
+body:not(.dark-theme) .login-field{color:#405d6c}
+body:not(.dark-theme) .login-field input,
+body:not(.dark-theme) .login-field select{
+  background:rgba(244,249,250,.94);
+  border:1px solid #d8e5e9;
+  color:#183446;
+}
+body:not(.dark-theme) .login-field select option{background:#fff;color:#183446}
+body:not(.dark-theme) .login-disclaimer{
+  background:#fff8eb;border-color:#f3e3c4;
+}
+body:not(.dark-theme) .login-disclaimer>span{color:#a96c1c}
+body:not(.dark-theme) .login-disclaimer p{color:#796b55}
+body:not(.dark-theme) .login-footer{border-color:#e0eaed;color:#7b929f}
+body:not(.dark-theme) .login-card h1 em{color:#168f8b}
+body:not(.dark-theme) .login-card .login-submit{box-shadow:0 9px 22px rgba(22,143,139,.18)}
