@@ -71,21 +71,35 @@
   document.addEventListener('input',e=>{if(e.target.id==='searchInput'){searchTerm=e.target.value.toLowerCase().trim();renderStudents();}if(e.target.id==='fullSearch'){const val=e.target.value.toLowerCase().trim();document.querySelectorAll('.register-card').forEach(card=>card.classList.toggle('hidden',!card.textContent.toLowerCase().includes(val)));}});
   document.addEventListener('change',e=>{if(e.target.id==='statusFilter'){statusFilter=e.target.value;renderStudents();}if(e.target.id==='roleSelect'){state.role=e.target.value;saveState();render();toast('Demo role changed',roleLabel(state.role)+(state.role==='guardian'?' · read-only access':' · permissions shown for demo'),'success');}});
   $('dialogConfirm').addEventListener('click',e=>{e.preventDefault();confirmAction();});
+  const themeNames=['light','dark','amber'];
   function applyTheme(theme){
-    const dark=theme==='dark';
-    document.body.classList.toggle('dark-theme',dark);
+    const selected=themeNames.includes(theme)?theme:'light';
+    document.body.classList.remove('dark-theme','amber-theme');
+    if(selected==='dark')document.body.classList.add('dark-theme');
+    if(selected==='amber')document.body.classList.add('amber-theme');
     const toggle=$('themeToggle');
     if(toggle){
-      toggle.textContent=dark?'☼':'☾';
-      toggle.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
-      toggle.title=dark?'Switch to light theme':'Switch to dark theme';
+      toggle.textContent=selected==='dark'?'☼':selected==='amber'?'◉':'☾';
+      toggle.dataset.theme=selected;
+      toggle.setAttribute('aria-label','Current theme: '+selected+'. Click to change theme.');
+      toggle.title='Theme: '+selected+' — click to cycle';
     }
-    try{localStorage.setItem('routerakshak-theme',dark?'dark':'light');}catch(e){}
+    try{localStorage.setItem('routerakshak-theme',selected);}catch(e){}
   }
   let savedTheme='light';
   try{savedTheme=localStorage.getItem('routerakshak-theme')||'light';}catch(e){}
   applyTheme(savedTheme);
-  $('themeToggle').addEventListener('click',()=>applyTheme(document.body.classList.contains('dark-theme')?'light':'dark'));
+  $('themeToggle').addEventListener('click',()=>{
+    const current=document.body.classList.contains('dark-theme')?'dark':document.body.classList.contains('amber-theme')?'amber':'light';
+    applyTheme(themeNames[(themeNames.indexOf(current)+1)%themeNames.length]);
+  });
+  function showLogin(){
+    try{sessionStorage.removeItem(demoSessionKey);}catch(e){}
+    if(loginGate)loginGate.classList.remove('hidden');
+    if(appShell)appShell.classList.add('hidden');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  $('logoutButton')?.addEventListener('click',showLogin);
   // Clearly simulated telemetry; this never changes student attendance.
   function tickGps(){gpsTick=(gpsTick+1)%100;const lat=(28.6139+Math.sin(gpsTick/12)*0.012).toFixed(4);const lon=(77.2090+Math.cos(gpsTick/14)*0.015).toFixed(4);$('gpsCoord').textContent=lat+'° N · '+lon+'° E';$('gpsSpeed').textContent=(18+Math.round((Math.sin(gpsTick/5)+1)*7))+' km/h';const progress=48+Math.round((Math.sin(gpsTick/17)+1)*9);$('routeProgress').style.width=progress+'%';$('progressLabel').textContent=progress+'% complete';}
   const loginGate=$('loginGate'), appShell=$('appShell');
