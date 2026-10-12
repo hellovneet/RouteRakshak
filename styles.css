@@ -51,3 +51,101 @@ body{background:#edf3f2}
   .nav-item{flex:0 0 auto;padding:9px 10px}
   .topbar{margin:3px 3px 18px}
 }
+
+
+/* RouteRakshak visual direction: inspired by the supplied neon-on-black web design reference. */
+:root{
+ --ink:#f7f5fb;--muted:#aaa4b7;--line:rgba(255,255,255,.12);
+ --glass:rgba(18,17,23,.88);--glass-strong:rgba(25,22,32,.96);
+ --teal:#cf38ff;--teal-dark:#9b20ff;--mint:#2a2035;
+ --green:#55e3b1;--green-bg:rgba(48,219,166,.14);
+ --blue:#55a8ff;--blue-bg:rgba(70,141,255,.16);
+ --amber:#ffc06e;--amber-bg:rgba(255,177,72,.15);
+ --shadow:0 22px 70px rgba(0,0,0,.28);
+}
+html{min-height:100%;background:#08080b}
+body{
+ color:var(--ink);
+ background:
+   radial-gradient(ellipse at 4% 12%,rgba(0,111,255,.98),transparent 35%),
+   radial-gradient(ellipse at 98% 28%,rgba(255,0,104,.9),transparent 34%),
+   radial-gradient(ellipse at 50% 0%,rgba(122,30,255,.58),transparent 42%),
+   linear-gradient(130deg,#12101b 0%,#08080b 55%,#180b19 100%);
+ background-attachment:fixed;
+}
+.ambient{filter:blur(45px);opacity:.55}
+.ambient-one{width:420px;height:420px;top:8%;right:12%;background:radial-gradient(circle,rgba(235,0,255,.42),transparent 68%)}
+.ambient-two{width:440px;height:440px;bottom:2%;left:22%;background:radial-gradient(circle,rgba(0,117,255,.36),transparent 70%)}
+.app-shell{max-width:1740px;gap:15px;padding:20px 24px}
+.glass,.sidebar,.metric-card,.panel{
+ background:rgba(13,13,16,.88);border:1px solid rgba(255,255,255,.09);
+ box-shadow:0 20px 65px rgba(0,0,0,.25);
+ backdrop-filter:blur(24px) saturate(125%);-webkit-backdrop-filter:blur(24px) saturate(125%);
+}
+.sidebar{border-radius:20px;padding:13px 16px}
+.brand strong,.profile-copy strong,.metric-value,.panel h2,.workflow-step strong,.student-cell strong,tbody td strong,.event-copy strong,.fleet-mini-head>strong,.vehicle-info strong{color:#fff}
+.brand small,.workspace-label,.breadcrumbs,.breadcrumbs strong,.profile-copy small,.metric-top,.metric-foot,.page-heading p,.panel-heading p,.section-kicker,.eyebrow,.app-footer,.date-chip small,.table-footer,.muted-text{color:#aaa4b7}
+.brand-mark{background:linear-gradient(135deg,#ff2d83,#b323ff 55%,#345dff);box-shadow:0 0 25px rgba(211,39,255,.22)}
+.nav-item{color:#bcb6c8}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav-item.active{color:#fff;background:linear-gradient(100deg,rgba(255,42,132,.16),rgba(150,42,255,.15));box-shadow:inset 0 -2px 0 #e632ff}
+.nav-count{background:rgba(255,255,255,.09);color:#d9d3e2}
+.demo-pill,.live-tag,.date-chip,.icon-button,.search-box,.journey-toolbar select,.role-control select{
+ background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.12);color:#c4bdce
+}
+.demo-pill i,.live-tag i,.demo-foot i,.app-footer i{background:#ff3d9b;box-shadow:0 0 10px rgba(255,45,156,.55)}
+.page-heading h1{color:#fff}
+.page-heading h1 em{color:#ff48bc}
+.eyebrow-line{background:linear-gradient(90deg,#ff3d8c,#a23bff)}
+.metric-card{border-radius:14px}
+.metric-icon.teal{background:rgba(213,47,255,.16);color:#f16bff}
+.metric-icon.green{background:rgba(56,221,166,.14);color:#55e3b1}
+.metric-icon.amber{background:rgba(255,177,72,.14);color:#ffc06e}
+.metric-icon.blue{background:rgba(70,141,255,.16);color:#65b4ff}
+.status-dot.teal-dot{background:#e34dff}.status-dot.green-dot{background:#55e3b1}.status-dot.amber-dot{background:#ffc06e}.status-dot.blue-dot{background:#65b4ff}
+.panel{border-radius:17px}
+.text-button,.row-action{color:#ff65c8}
+.row-action{border-color:rgba(255,65,184,.3)}
+.search-box input{color:#fff}.search-box input::placeholder{color:#777182}
+.journey-toolbar select option,.role-control select option{background:#17151d;color:#f7f5fb}
+thead th{color:#898294;border-color:rgba(255,255,255,.1)}
+tbody td{color:#bcb6c8;border-color:rgba(255,255,255,.075)}
+tbody td strong{color:#f7f5fb}
+.table-wrap tbody tr:hover{background:rgba(255,255,255,.035)}
+.status-pill.waiting{background:rgba(255,255,255,.08);color:#b4acbf}
+.status-pill.inbus{background:rgba(206,54,255,.15);color:#e780ff}
+.status-pill.inschool{background:rgba(48,219,166,.14);color:#55e3b1}
+.status-pill.home{background:rgba(255,177,72,.14);color:#ffc06e}
+.student-avatar.mint{background:rgba(48,219,166,.15);color:#65e9bd}
+.student-avatar.lavender{background:rgba(171,92,255,.18);color:#d2a6ff}
+.student-avatar.peach{background:rgba(255,128,97,.15);color:#ffad92}
+.student-avatar.blue{background:rgba(70,141,255,.16);color:#8cc4ff}
+.map-art{background:#16151c;border-color:rgba(255,255,255,.1)}
+.park{fill:#23232d}.minor-roads path{stroke:#383540}.major-roads path{stroke:#48414e}.major-roads path+path{stroke:#5a4d62}
+.route-dash path{stroke:#ff43c7;filter:drop-shadow(0 0 5px rgba(255,43,197,.6))}
+.map-label{fill:#aaa1b6}
+.map-pin circle{fill:#d735ff}.map-school circle{fill:#3e8dff}
+.map-legend,.map-coordinates{background:rgba(18,16,24,.88);border-color:rgba(255,255,255,.12)}
+.map-legend,.map-coordinates span{color:#b6adbf}.map-coordinates strong{color:#fff}
+.vehicle-icon,.bus-step{background:rgba(213,47,255,.15);color:#ef7bff}
+.school-step{background:rgba(70,141,255,.16);color:#8cc4ff}
+.home-step{background:rgba(255,177,72,.14);color:#ffc06e}
+.workflow-panel{background:linear-gradient(135deg,rgba(30,18,35,.94),rgba(14,14,18,.92))}
+.workflow-step,.register-card,.fleet-card{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.09)}
+.workflow-copy,.workflow-step small,.event-copy small,.register-card>p,.fleet-card>p,.register-details span,.register-details strong{color:#aaa4b7}
+.event-row,.register-details,.fleet-numbers{border-color:rgba(255,255,255,.09)}
+.teal-event{background:rgba(213,47,255,.15);color:#ef7bff}
+.green-event{background:rgba(48,219,166,.14);color:#55e3b1}
+.amber-event{background:rgba(255,177,72,.14);color:#ffc06e}
+.progress-track{background:rgba(255,255,255,.1)}
+.progress-track span{background:linear-gradient(90deg,#ff3e93,#c63cff,#5475ff)}
+.secondary-button{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13);color:#ded7e7}
+.primary-button{background:linear-gradient(100deg,#ff397f,#c52bff 58%,#6d43ff);box-shadow:0 5px 20px rgba(207,45,255,.18)}
+.role-warning{background:rgba(255,177,72,.08);border-color:rgba(255,177,72,.2);color:#ffd18a}
+.toast{background:rgba(24,20,30,.97);border-color:rgba(255,255,255,.12);color:#fff}
+.toast strong{color:#fff}.toast small{color:#aaa4b7}
+.confirm-dialog{background:rgba(20,17,26,.98);border-color:rgba(255,255,255,.14);color:#fff}
+.confirm-dialog h2{color:#fff}.confirm-dialog p{color:#b6adbf}
+.dialog-icon{background:rgba(213,47,255,.16);color:#f16bff}
+@media(max-width:920px){.app-shell{padding:12px}.sidebar{background:rgba(13,13,16,.9)}}
+@media(max-width:600px){.app-shell{padding:8px}.page-heading h1{font-size:26px}}
