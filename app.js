@@ -140,12 +140,63 @@
     window.scrollTo({top:0,behavior:'smooth'});
   }
   $('logoutButton')?.addEventListener('click',showLogin);
-  // Clearly simulated telemetry; this never changes student attendance.
-  function tickGps(){gpsTick=(gpsTick+1)%100;const lat=(28.6139+Math.sin(gpsTick/12)*0.012).toFixed(4);const lon=(77.2090+Math.cos(gpsTick/14)*0.015).toFixed(4);$('gpsCoord').textContent=lat+'° N · '+lon+'° E';$('gpsSpeed').textContent=(18+Math.round((Math.sin(gpsTick/5)+1)*7))+' km/h';const progress=48+Math.round((Math.sin(gpsTick/17)+1)*9);$('routeProgress').style.width=progress+'%';$('progressLabel').textContent=progress+'% complete';}
+  // Real geographic tiles from OpenStreetMap; vehicle telemetry remains explicitly simulated.
+  let liveMap=null, busMarker=null, routeLine=null, mapInited=false;
+  const demoRoute=[
+    [28.61390,77.20900],[28.61510,77.21120],[28.61720,77.21300],
+    [28.61910,77.21180],[28.62010,77.20890],[28.61840,77.20640],
+    [28.61610,77.20580],[28.61450,77.20700],[28.61390,77.20900]
+  ];
+  function initLiveMap(){
+    if(mapInited)return;
+    const host=$('liveMap');
+    if(!host)return;
+    if(!window.L){
+      $('mapFallback')?.classList.remove('hidden');
+      $('gpsPulse')&&( $('gpsPulse').innerHTML='<i></i> Map unavailable · demo telemetry' );
+      return;
+    }
+    try{
+      liveMap=window.L.map(host,{zoomControl:true,scrollWheelZoom:false}).setView(demoRoute[0],14);
+      window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+      }).addTo(liveMap);
+      routeLine=window.L.polyline(demoRoute,{color:'#3459D9',weight:5,opacity:.78,dashArray:'8 8'}).addTo(liveMap);
+      const busIcon=window.L.divIcon({className:'rr-bus-marker',html:'<span>BUS</span>',iconSize:[42,30],iconAnchor:[21,15]});
+      busMarker=window.L.marker(demoRoute[0],{icon:busIcon,title:'RR-012 · simulated location'}).addTo(liveMap).bindPopup('<strong>RR-012 · Route A</strong><br>Simulated vehicle position');
+      window.L.circleMarker(demoRoute[4],{radius:7,color:'#fff',weight:3,fillColor:'#3459D9',fillOpacity:1}).addTo(liveMap).bindTooltip('School stop');
+      liveMap.fitBounds(routeLine.getBounds(),{padding:[30,30]});
+      mapInited=true;
+      $('mapFallback')?.classList.add('hidden');
+      requestAnimationFrame(()=>liveMap&&liveMap.invalidateSize());
+    }catch(err){
+      $('mapFallback')?.classList.remove('hidden');
+    }
+  }
+  // Location/speed move along a sample route every 4.5 seconds. This is NOT hardware GPS.
+  function tickGps(){
+    gpsTick=(gpsTick+1)%100;
+    const progress=(gpsTick%80)/80;
+    const segment=progress*(demoRoute.length-1);
+    const index=Math.min(Math.floor(segment),demoRoute.length-2);
+    const fraction=segment-index;
+    const lat=demoRoute[index][0]+(demoRoute[index+1][0]-demoRoute[index][0])*fraction;
+    const lon=demoRoute[index][1]+(demoRoute[index+1][1]-demoRoute[index][1])*fraction;
+    $('gpsCoord').textContent=lat.toFixed(5)+'° N · '+lon.toFixed(5)+'° E';
+    $('gpsSpeed').textContent=(18+Math.round((Math.sin(gpsTick/5)+1)*7))+' km/h';
+    const routeProgress=Math.round(progress*100);
+    $('routeProgress').style.width=routeProgress+'%';
+    $('progressLabel').textContent=routeProgress+'% complete';
+    if(busMarker&&liveMap)busMarker.setLatLng([lat,lon]);
+    const pulse=$('gpsPulse');
+    if(pulse)pulse.innerHTML='<i></i> Demo feed · 4.5s';
+  }
   const loginGate=$('loginGate'), appShell=$('appShell');
   function openDemoWorkspace(){
     if(loginGate) loginGate.classList.add('hidden');
     if(appShell) appShell.classList.remove('hidden');
+    initLiveMap();
+    requestAnimationFrame(()=>liveMap&&liveMap.invalidateSize());
   }
   const demoLoginForm=$('demoLoginForm');
   if(demoLoginForm) demoLoginForm.addEventListener('submit',e=>{
