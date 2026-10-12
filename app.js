@@ -71,7 +71,21 @@
   document.addEventListener('input',e=>{if(e.target.id==='searchInput'){searchTerm=e.target.value.toLowerCase().trim();renderStudents();}if(e.target.id==='fullSearch'){const val=e.target.value.toLowerCase().trim();document.querySelectorAll('.register-card').forEach(card=>card.classList.toggle('hidden',!card.textContent.toLowerCase().includes(val)));}});
   document.addEventListener('change',e=>{if(e.target.id==='statusFilter'){statusFilter=e.target.value;renderStudents();}if(e.target.id==='roleSelect'){state.role=e.target.value;saveState();render();toast('Demo role changed',roleLabel(state.role)+(state.role==='guardian'?' · read-only access':' · permissions shown for demo'),'success');}});
   $('dialogConfirm').addEventListener('click',e=>{e.preventDefault();confirmAction();});
-  $('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark-theme');$('themeToggle').textContent=document.body.classList.contains('dark-theme')?'☼':'◐';});
+  function applyTheme(theme){
+    const dark=theme==='dark';
+    document.body.classList.toggle('dark-theme',dark);
+    const toggle=$('themeToggle');
+    if(toggle){
+      toggle.textContent=dark?'☼':'☾';
+      toggle.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
+      toggle.title=dark?'Switch to light theme':'Switch to dark theme';
+    }
+    try{localStorage.setItem('routerakshak-theme',dark?'dark':'light');}catch(e){}
+  }
+  let savedTheme='light';
+  try{savedTheme=localStorage.getItem('routerakshak-theme')||'light';}catch(e){}
+  applyTheme(savedTheme);
+  $('themeToggle').addEventListener('click',()=>applyTheme(document.body.classList.contains('dark-theme')?'light':'dark'));
   // Clearly simulated telemetry; this never changes student attendance.
   function tickGps(){gpsTick=(gpsTick+1)%100;const lat=(28.6139+Math.sin(gpsTick/12)*0.012).toFixed(4);const lon=(77.2090+Math.cos(gpsTick/14)*0.015).toFixed(4);$('gpsCoord').textContent=lat+'° N · '+lon+'° E';$('gpsSpeed').textContent=(18+Math.round((Math.sin(gpsTick/5)+1)*7))+' km/h';const progress=48+Math.round((Math.sin(gpsTick/17)+1)*9);$('routeProgress').style.width=progress+'%';$('progressLabel').textContent=progress+'% complete';}
   const loginGate=$('loginGate'), appShell=$('appShell');
