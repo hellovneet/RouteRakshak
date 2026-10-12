@@ -17,9 +17,18 @@ This first version is a frontend prototype with demo data and browser-local pers
 
 Events should include server-generated timestamps, actor identity, trip and bus identifiers, guardian-scoped notifications, authorization checks, idempotency, and append-only audit history in production.
 
-## Run
+## Run locally
 
 Open `index.html` in a modern browser. No build tools are required for this prototype.
+
+## Deploy to Vercel
+
+1. Import `hellovneet/RouteRakshak` from GitHub in the Vercel dashboard.
+2. Choose **Other** as the framework preset if Vercel asks for one.
+3. Leave the Build Command empty and set the Output Directory to `.` (the repository root).
+4. Keep the Root Directory as `./` and deploy.
+
+The repository includes a minimal `vercel.json` for clean URLs; Vercel's native static-file handling serves `index.html`, `styles.css`, and `app.js`. No Node.js build step is needed.
 
 ## Safety and privacy
 
