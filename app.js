@@ -11,7 +11,8 @@
   ];
   const seedEvents = initialStudents.filter(s=>s.lastEvent).map(s=>({id:'seed-'+s.id,type:s.lastEvent.type,label:s.lastEvent.label,studentId:s.id,studentName:s.name,bus:s.bus,route:s.route,leg:s.leg,at:s.lastEvent.at,actor:s.lastEvent.actor,guardian:s.guardian,notificationStatus:'demo-only'})).sort((a,b)=>new Date(b.at)-new Date(a.at));
   let state = loadState();
-  let currentView = 'overview';\n  const demoSessionKey = 'routerakshak-demo-session';
+  let currentView = 'overview';
+  const demoSessionKey = 'routerakshak-demo-session';
   let searchTerm = '';
   let statusFilter = 'all';
   let pendingAction = null;
