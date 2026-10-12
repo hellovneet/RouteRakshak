@@ -578,3 +578,148 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .amber-theme .role-stat,.amber-theme .role-work-card,.amber-theme .guardian-journey{background:rgba(255,252,246,.9);border-color:#fff}
 @media(max-width:850px){.role-stats{grid-template-columns:1fr}.role-work-grid{grid-template-columns:1fr}.role-stat{padding:16px}.guardian-journey{padding:18px}}
 @media(max-width:480px){.guardian-child{align-items:flex-start;flex-wrap:wrap}.guardian-readonly{margin-left:auto}.guardian-status{align-items:flex-start}}
+
+
+/* Clean Light refresh — RouteRakshak */
+:root{
+  --ink:#182238;
+  --muted:#69758A;
+  --line:#E3E8F0;
+  --glass:rgba(255,255,255,.88);
+  --glass-strong:#FFFFFF;
+  --teal:#3459D9;
+  --teal-dark:#2948B5;
+  --mint:#E8EDFF;
+  --green:#16845D;
+  --green-bg:#E4F6EE;
+  --blue:#3459D9;
+  --blue-bg:#E8EDFF;
+  --amber:#A96812;
+  --amber-bg:#FFF2D9;
+  --shadow:0 8px 28px rgba(24,34,56,.055);
+  color:var(--ink);
+  background:#F4F6FA;
+}
+body:not(.dark-theme):not(.amber-theme){
+  background:#F4F6FA;
+  color:#182238;
+}
+body:not(.dark-theme):not(.amber-theme) .ambient-one{
+  background:radial-gradient(circle,rgba(52,89,217,.075),transparent 70%);
+}
+body:not(.dark-theme):not(.amber-theme) .ambient-two{
+  background:radial-gradient(circle,rgba(116,145,205,.08),transparent 70%);
+}
+body:not(.dark-theme):not(.amber-theme) .glass{
+  background:rgba(255,255,255,.92);
+  border:1px solid #E3E8F0;
+  box-shadow:0 8px 28px rgba(24,34,56,.055);
+  backdrop-filter:blur(16px) saturate(125%);
+  -webkit-backdrop-filter:blur(16px) saturate(125%);
+}
+body:not(.dark-theme):not(.amber-theme) .brand-mark{
+  background:linear-gradient(145deg,#4267E8,#2948B5);
+  box-shadow:0 6px 14px rgba(52,89,217,.2);
+}
+body:not(.dark-theme):not(.amber-theme) .brand small,
+body:not(.dark-theme):not(.amber-theme) .workspace-label,
+body:not(.dark-theme):not(.amber-theme) .section-kicker,
+body:not(.dark-theme):not(.amber-theme) .eyebrow{
+  color:#69758A;
+}
+body:not(.dark-theme):not(.amber-theme) .nav-item{color:#69758A}
+body:not(.dark-theme):not(.amber-theme) .nav-item:hover{
+  background:#F4F6FA;color:#182238;
+}
+body:not(.dark-theme):not(.amber-theme) .nav-item.active{
+  color:#2948B5;background:#E8EDFF;
+  box-shadow:inset 0 0 0 1px rgba(52,89,217,.10);
+}
+body:not(.dark-theme):not(.amber-theme) .nav-count{
+  background:#F4F6FA;color:#69758A;
+}
+body:not(.dark-theme):not(.amber-theme) .privacy-note{
+  background:#F7F9FC;border:1px solid #E3E8F0;
+}
+body:not(.dark-theme):not(.amber-theme) .privacy-icon,
+body:not(.dark-theme):not(.amber-theme) h1 em{
+  color:#3459D9;
+}
+body:not(.dark-theme):not(.amber-theme) .eyebrow-line{background:#3459D9}
+body:not(.dark-theme):not(.amber-theme) .page-heading p,
+body:not(.dark-theme):not(.amber-theme) .privacy-note p,
+body:not(.dark-theme):not(.amber-theme) .date-chip small,
+body:not(.dark-theme):not(.amber-theme) .breadcrumbs{
+  color:#69758A;
+}
+body:not(.dark-theme):not(.amber-theme) .date-chip,
+body:not(.dark-theme):not(.amber-theme) .demo-pill,
+body:not(.dark-theme):not(.amber-theme) .live-tag,
+body:not(.dark-theme):not(.amber-theme) .icon-button,
+body:not(.dark-theme):not(.amber-theme) .search-box,
+body:not(.dark-theme):not(.amber-theme) .journey-toolbar select,
+body:not(.dark-theme):not(.amber-theme) .role-control select,
+body:not(.dark-theme):not(.amber-theme) .secondary-button{
+  background:#FFFFFF;border-color:#E3E8F0;color:#69758A;
+}
+body:not(.dark-theme):not(.amber-theme) .date-icon{
+  background:#E8EDFF;color:#3459D9;
+}
+body:not(.dark-theme):not(.amber-theme) .primary-button,
+body:not(.dark-theme):not(.amber-theme) .login-submit{
+  background:#3459D9;border-color:#3459D9;color:#FFFFFF;
+  box-shadow:0 5px 12px rgba(52,89,217,.16);
+}
+body:not(.dark-theme):not(.amber-theme) .primary-button:hover,
+body:not(.dark-theme):not(.amber-theme) .login-submit:hover{
+  background:#2948B5;border-color:#2948B5;
+}
+body:not(.dark-theme):not(.amber-theme) .metric-card,
+body:not(.dark-theme):not(.amber-theme) .panel,
+body:not(.dark-theme):not(.amber-theme) .register-card,
+body:not(.dark-theme):not(.amber-theme) .fleet-card,
+body:not(.dark-theme):not(.amber-theme) .workflow-panel,
+body:not(.dark-theme):not(.amber-theme) .role-stat,
+body:not(.dark-theme):not(.amber-theme) .role-work-card,
+body:not(.dark-theme):not(.amber-theme) .guardian-journey{
+  background:#FFFFFF;border:1px solid #E3E8F0;
+  box-shadow:0 8px 24px rgba(24,34,56,.045);
+}
+body:not(.dark-theme):not(.amber-theme) .role-stat-icon,
+body:not(.dark-theme):not(.amber-theme) .role-work-icon{
+  background:#E8EDFF;color:#3459D9;
+}
+body:not(.dark-theme):not(.amber-theme) .route-focus{
+  background:linear-gradient(135deg,#F0F3FF,#FFFFFF 76%);
+  border-color:#DCE4FF;
+}
+body:not(.dark-theme):not(.amber-theme) .route-steps{color:#3459D9}
+body:not(.dark-theme):not(.amber-theme) .guardian-note{
+  background:#F7F9FC;border-color:#E3E8F0;
+}
+body:not(.dark-theme):not(.amber-theme) .guardian-readonly{
+  color:#875510;background:#FFF2D9;
+}
+body:not(.dark-theme):not(.amber-theme) button:focus-visible,
+body:not(.dark-theme):not(.amber-theme) input:focus-visible,
+body:not(.dark-theme):not(.amber-theme) select:focus-visible{
+  outline:3px solid rgba(52,89,217,.24);
+}
+body:not(.dark-theme):not(.amber-theme) .login-gate{
+  background:linear-gradient(145deg,#F4F6FA,#EAF0FF);
+}
+body:not(.dark-theme):not(.amber-theme) .login-card{
+  background:rgba(255,255,255,.96);border:1px solid #E3E8F0;
+  box-shadow:0 24px 70px rgba(24,34,56,.12);
+}
+body:not(.dark-theme):not(.amber-theme) .login-field input,
+body:not(.dark-theme):not(.amber-theme) .login-field select{
+  background:#FFFFFF;border-color:#DCE3EE;color:#182238;
+}
+body:not(.dark-theme):not(.amber-theme) .login-field input:focus,
+body:not(.dark-theme):not(.amber-theme) .login-field select:focus{
+  border-color:#3459D9;box-shadow:0 0 0 3px rgba(52,89,217,.10);
+}
+@media(max-width:850px){
+  body:not(.dark-theme):not(.amber-theme) .sidebar{background:rgba(255,255,255,.96)}
+}
