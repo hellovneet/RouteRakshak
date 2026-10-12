@@ -20,10 +20,10 @@
       <div class="section-kicker">WELCOME TO YOUR WORKSPACE</div>
       <h1 id="loginTitle">Your journey, <em>your view.</em></h1>
       <p class="login-intro">Choose a demo role to preview its dashboard and workflow.</p>
-      <form id="demoLoginForm">
+      <form id="demoLoginForm" onsubmit="event.preventDefault(); document.getElementById(\'loginGate\').classList.add(\'hidden\'); document.getElementById(\'appShell\').classList.remove(\'hidden\');">
         <label class="login-field"><span>Workspace role</span><select id="loginRole" required><option value="admin">School admin</option><option value="school_staff">School staff</option><option value="conductor">Driver / conductor</option><option value="guardian">Parent / guardian</option></select></label>
         <label class="login-field"><span>Demo access code</span><input id="demoAccessCode" type="text" placeholder="Type any demo code" autocomplete="off" required /></label>
-        <button class="primary-button login-submit" type="submit" onclick="document.getElementById(\'loginGate\').classList.add(\'hidden\');document.getElementById(\'appShell\').classList.remove(\'hidden\')">Open my dashboard <span>→</span></button>
+        <button class="primary-button login-submit" type="submit">Open my dashboard <span>→</span></button>
       </form>
       <div class="login-disclaimer"><span>i</span><p>Preview only. This role picker is not secure authentication. Never enter a real password or real student data.</p></div>
       <div class="login-footer"><span>ROUTERAKSHAK</span><span>INDEPENDENT PROTOTYPE</span></div>
