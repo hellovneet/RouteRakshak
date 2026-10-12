@@ -37,6 +37,7 @@
   function renderRoleDashboard(){
     const host=$('roleHome');if(!host)return;
     const role=state.role||'admin';
+    if(currentView!=='overview'){host.classList.add('hidden');$('metricsGrid')?.classList.remove('hidden');return;}
     const all=state.students;
     const mine=visibleStudents();
     const count=(list,status)=>list.filter(s=>s.status===status).length;
