@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#edf5f7" />
+  <meta name="description" content="RouteRakshak — student journey and school transport dashboard prototype." />
+  <title>RouteRakshak — Student Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar glass">
+      <a class="brand" href="#" aria-label="RouteRakshak home"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5V7.8c0-.9.7-1.6 1.6-1.6h12.8c.9 0 1.6.7 1.6 1.6v8.7M3 13h18M7 17.5h.01M17 17.5h.01M7 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM17 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg></span><span><strong>RouteRakshak</strong><small>SMART TRANSPORT</small></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span>▦</span> Overview</button>
+        <button class="nav-item" data-view="students"><span>♙</span> Student journey</button>
+        <button class="nav-item" data-view="fleet"><span>▣</span> Fleet & routes</button>
+        <button class="nav-item" data-view="audit"><span>◷</span> Event history <span class="nav-count" id="auditCount">0</span></button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="privacy-note"><span class="privacy-icon">◇</span><div><strong>Privacy first</strong><p>Demo data only. Guardian views are simulated in this prototype.</p></div></div>
+      <div class="profile-row"><div class="avatar">AD</div><div class="profile-copy"><strong>Demo operator</strong><small>Prototype workspace</small></div><span class="online-dot"></span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <strong id="crumb">Overview</strong></div><div class="top-actions"><span class="demo-pill"><i></i> SIMULATION MODE</span><button class="icon-button" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">◐</button><div class="avatar small-avatar">AD</div></div></header>
+      <section class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> SCHOOL TRANSPORT INTELLIGENCE</div><h1 id="pageTitle">Every journey, <em>accounted for.</em></h1><p id="pageSubtitle">A clear view of student journeys, fleet movement, and verified hand-offs.</p></div><div class="date-chip"><span class="date-icon">◷</span><span><strong id="todayLabel">Today</strong><small>Local demo session</small></span></div></section>
+
+      <section class="metrics-grid" aria-label="Journey metrics">
+        <article class="metric-card glass"><div class="metric-top"><span>Students on bus</span><span class="metric-icon teal">↗</span></div><div class="metric-value" id="metricBus">0</div><div class="metric-foot"><span class="status-dot teal-dot"></span> Boarding confirmed</div></article>
+        <article class="metric-card glass"><div class="metric-top"><span>At school</span><span class="metric-icon green">⌂</span></div><div class="metric-value" id="metricSchool">0</div><div class="metric-foot"><span class="status-dot green-dot"></span> Arrival confirmed</div></article>
+        <article class="metric-card glass"><div class="metric-top"><span>Home dropped</span><span class="metric-icon amber">✓</span></div><div class="metric-value" id="metricHome">0</div><div class="metric-foot"><span class="status-dot amber-dot"></span> Drop-off confirmed</div></article>
+        <article class="metric-card glass"><div class="metric-top"><span>Active buses</span><span class="metric-icon blue">▣</span></div><div class="metric-value" id="metricBuses">0</div><div class="metric-foot"><span class="status-dot blue-dot"></span> Simulated fleet</div></article>
+      </section>
+
+      <section class="content-grid" id="overviewGrid">
+        <article class="panel glass journey-panel"><div class="panel-heading"><div><div class="section-kicker">LIVE OPERATIONS</div><h2>Student journey board</h2><p>Manual confirmations · Current demo trip</p></div><button class="text-button" data-view="students">Full register <span>↗</span></button></div>
+          <div class="journey-toolbar"><label class="search-box"><span>⌕</span><input id="searchInput" placeholder="Search student, bus or route…" autocomplete="off" /></label><select id="statusFilter" aria-label="Filter by student status"><option value="all">All statuses</option><option value="WAITING FOR PICKUP">Waiting</option><option value="IN THE BUS">In the bus</option><option value="IN SCHOOL">In school</option><option value="HOME DROPPED">Home dropped</option></select></div>
+          <div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>ROUTE / BUS</th><th>JOURNEY STATUS</th><th>LAST EVENT</th><th>ACTION</th></tr></thead><tbody id="studentRows"></tbody></table></div>
+          <div class="table-footer"><span id="recordCount">0 students</span><span class="demo-foot"><i></i> Fictional sample records</span></div>
+        </article>
+        <article class="panel glass map-panel"><div class="panel-heading"><div><div class="section-kicker">FLEET TELEMETRY</div><h2>Route overview</h2><p>Illustrative GPS simulation</p></div><span class="live-tag"><i></i> SIMULATED</span></div>
+          <div class="map-art" role="img" aria-label="Illustrative map with simulated bus locations"><svg class="map-lines" viewBox="0 0 500 340" preserveAspectRatio="xMidYMid slice"><path class="park" d="M-20 45 85 18 150 60 134 126 53 142-10 110ZM300-20 375 25 355 95 418 120 520 85V-20ZM330 245 395 200 520 235V370H365Z"/><g class="minor-roads"><path d="M-30 205 530 80M30 -20 250 380M-20 285 500 165M110 -20 440 370M-20 65 520 300M-30 155 500 330M230 -20 190 370M430 -20 305 360"/></g><g class="major-roads"><path d="M-20 130C100 165 125 240 235 195S385 95 530 150"/><path d="M130 -20C175 80 210 95 240 180S310 275 340 360"/></g><g class="route-dash"><path d="M45 248Q120 185 200 210T335 145T450 95"/></g><g class="map-pin pin-a" transform="translate(200 210)"><circle r="17"/><text y="5" text-anchor="middle">1</text></g><g class="map-pin pin-b" transform="translate(335 145)"><circle r="17"/><text y="5" text-anchor="middle">2</text></g><g class="map-school" transform="translate(450 95)"><circle r="17"/><text y="5" text-anchor="middle">S</text></g><text x="24" y="38" class="map-label">NORTH CAMPUS</text><text x="338" y="320" class="map-label">EAST CONNECTOR</text></svg><div class="map-legend"><span><i class="legend-bus"></i> Simulated bus</span><span><i class="legend-school"></i> School</span></div><div class="map-coordinates"><span>GPS SIMULATION</span><strong id="gpsCoord">28.6139° N · 77.2090° E</strong></div></div>
+          <div class="fleet-mini"><div class="fleet-mini-head"><strong>Active vehicle</strong><span id="gpsPulse"><i></i> Updating demo</span></div><div class="vehicle-row"><div class="vehicle-icon">▣</div><div class="vehicle-info"><strong>RR-012 <span class="vehicle-route">Route A</span></strong><small>North Campus Loop</small></div><div class="vehicle-speed"><strong id="gpsSpeed">24 km/h</strong><small>Simulated speed</small></div></div><div class="progress-track"><span id="routeProgress"></span></div><div class="progress-caption"><span>Start point</span><span id="progressLabel">58% complete</span><span>School</span></div></div>
+        </article>
+      </section>
+
+      <section class="lower-grid" id="lowerGrid"><article class="panel glass activity-panel"><div class="panel-heading"><div><div class="section-kicker">VERIFIED HAND-OFFS</div><h2>Recent event history</h2><p>Latest attendance actions from this browser</p></div><button class="text-button" data-view="audit">View audit log <span>↗</span></button></div><div id="recentEvents" class="event-list"></div></article><article class="panel glass workflow-panel"><div class="section-kicker">JOURNEY WORKFLOW</div><h2>Every hand-off matters.</h2><p class="workflow-copy">Each status is a manual confirmation. GPS movement alone never marks a student as boarded or dropped.</p><div class="workflow-steps"><div class="workflow-step"><span class="step-number">01</span><span class="step-icon bus-step">▣</span><span><strong>Boarding</strong><small>Driver / conductor</small></span><span class="step-arrow">→</span></div><div class="workflow-step"><span class="step-number">02</span><span class="step-icon school-step">⌂</span><span><strong>School arrival</strong><small>Authorized school staff</small></span><span class="step-arrow">→</span></div><div class="workflow-step"><span class="step-number">03</span><span class="step-icon home-step">⌂</span><span><strong>Home drop</strong><small>Authorized trip staff</small></span><span class="step-arrow">✓</span></div></div></article></section>
+
+      <section class="panel glass full-view hidden" id="fullView"><div class="panel-heading"><div><div class="section-kicker" id="fullKicker">MANAGEMENT</div><h2 id="fullTitle">Student journey register</h2><p id="fullDesc">Review records and confirm the next journey event.</p></div><button class="secondary-button" id="backOverview">← Overview</button></div><div id="fullContent"></div></section>
+      <footer class="app-footer"><span>RouteRakshak <b>·</b> Independent prototype</span><span><i></i> Demo environment · No live student data</span></footer>
+    </main>
+  </div>
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+  <dialog class="confirm-dialog" id="confirmDialog"><form method="dialog"><div class="dialog-icon" id="dialogIcon">✓</div><div class="section-kicker">CONFIRM JOURNEY EVENT</div><h2 id="dialogTitle">Confirm event?</h2><p id="dialogMessage">This will add a timestamped event to the local demo audit history.</p><div class="dialog-actions"><button class="secondary-button" value="cancel">Cancel</button><button class="primary-button" id="dialogConfirm" value="confirm">Confirm event</button></div></form></dialog>
+  <script src="app.js" defer></script>
+</body>
+</html>
