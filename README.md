@@ -39,3 +39,11 @@ Use fictional demo data only. Do not enter real children's personal information.
 ## Future integration
 
 The simulated GPS adapter can later be replaced by an authenticated GPS/ESP32 telemetry service without treating location alone as proof of student boarding.
+
+
+## Map and location-data status
+- The dashboard map uses OpenStreetMap's public tile service through Leaflet and displays real geographic map tiles with attribution.
+- The Route A bus marker, speed, and progress are still **simulated demo telemetry** that updates every 4.5 seconds. No live vehicle hardware/GPS feed or cross-device realtime backend is connected yet.
+- The sample route is in central New Delhi and is illustrative only; it is not a configured school route.
+- For real vehicle tracking, connect an authenticated GPS device/app to a backend that validates device identity and timestamps, then stream updates to authorized users. Never treat GPS location alone as proof that a student boarded or was handed off.
+- Map tiles require an internet connection. If Leaflet/map tiles are unavailable, the app shows a fallback message; the demo's journey workflow remains separate.
